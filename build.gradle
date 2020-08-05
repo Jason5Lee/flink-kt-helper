@@ -8,6 +8,6 @@ subprojects {
     apply plugin: "maven-publish"
 //    apply plugin: "java-library"
 
-    group 'io.github.jason5lee'
-    version = '0.1'
+    group 'com.github.jason5lee'
+    version = '0.1.1'
 }

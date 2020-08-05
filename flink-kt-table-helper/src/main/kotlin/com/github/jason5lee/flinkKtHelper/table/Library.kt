@@ -1,6 +1,6 @@
 @file:Suppress("NOTHING_TO_INLINE")
 
-package io.github.jason5lee.flinkKtHelper.table
+package com.github.jason5lee.flinkKtHelper.table
 
 import org.apache.flink.table.api.ApiExpression
 import org.apache.flink.table.api.Expressions
