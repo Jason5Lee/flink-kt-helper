@@ -8,7 +8,7 @@ import org.apache.flink.streaming.api.datastream.KeyedStream
  * Creates a new [KeyedStream] that uses the provided kotlin lambda
  * as the key selector for partitioning its operator states.
  *
- * Note that the SAM constructor cannot be removed, otherwise runtime exception will occur.
+ * If you use [DataStream.keyBy] method, the SAM constructor cannot be omitted, otherwise runtime exception will occur.
  *
  * @param selector
  *            The Kotlin lambda for the KeySelector that will be used for extracting the key for partitioning
