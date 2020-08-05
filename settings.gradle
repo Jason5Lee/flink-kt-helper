@@ -1,0 +1,5 @@
+rootProject.name = 'flink-kt-helper'
+
+include 'flink-kt-streaming-helper'
+include 'flink-kt-table-helper'
+include 'flink-kt-tuple-helper'
