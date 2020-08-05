@@ -1,6 +1,6 @@
 @file:Suppress("NOTHING_TO_INLINE")
 
-package org.jason5lee.flinkKtHelper.tuple
+package io.github.jason5lee.flinkKtHelper.tuple
 
 import org.apache.flink.api.java.tuple.*
 

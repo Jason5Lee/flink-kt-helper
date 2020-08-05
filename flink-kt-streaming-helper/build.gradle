@@ -16,6 +16,10 @@ dependencies {
     compileOnly "org.apache.flink:flink-streaming-java_${scala_version}:${flink_version}"
 }
 
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
 
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
@@ -24,17 +28,28 @@ compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 
-task sourcesJar(type: Jar) {
-    from sourceSets.main.allSource
-    classifier "sources"
-}
-
 publishing {
     publications {
-        maven(MavenPublication) {
-            artifactId = 'flink-kt-streaming-helper'
-            artifact(sourcesJar)
+        mavenJava(MavenPublication) {
             from components.java
+
+            pom {
+                name = "Flink Streaming Kotlin Helper"
+                description = "Compile-only flink helper library for Flink streaming API"
+                developers {
+                    developer {
+                        id = "jason5lee"
+                        name = "Jason Dongheng Lee"
+                        email = "jason5lee@hotmail.com"
+                    }
+                }
+            }
         }
+    }
+}
+
+javadoc {
+    if(JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
     }
 }

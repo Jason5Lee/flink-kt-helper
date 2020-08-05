@@ -15,6 +15,11 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
 }
 
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
@@ -22,17 +27,28 @@ compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 
-task sourcesJar(type: Jar) {
-    from sourceSets.main.allSource
-    classifier "sources"
-}
-
 publishing {
     publications {
-        maven(MavenPublication) {
-            artifactId = 'flink-kt-table-helper'
-            artifact(sourcesJar)
-            from components.java
+        mavenJava(MavenPublication) {
+            from project.components.java
+
+            pom {
+                name = "Flink Table Kotlin Helper"
+                description = "Compile-only flink helper library for Flink table API"
+                developers {
+                    developer {
+                        id = "jason5lee"
+                        name = "Jason Dongheng Lee"
+                        email = "jason5lee@hotmail.com"
+                    }
+                }
+            }
         }
+    }
+}
+
+javadoc {
+    if(JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
     }
 }
